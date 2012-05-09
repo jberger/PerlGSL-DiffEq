@@ -4,7 +4,7 @@
 
 #include "common.h"
 
-MODULE = Math::GSLx::ODEIV2	PACKAGE = Math::GSLx::ODEIV2	
+MODULE = PerlGSL::DiffEq	PACKAGE = PerlGSL::DiffEq	
 
 PROTOTYPES: DISABLE
 
