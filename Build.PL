@@ -9,7 +9,7 @@ my $min_gsl_version = 1.15;
 sub exit_early {
   my $message = shift || "";
 
-  print "Math::GSLx::ODEIV2 requires GSL version >= $min_gsl_version" . $message . "\n";
+  print "PerlGSL::DiffEq requires GSL version >= $min_gsl_version" . $message . "\n";
   exit 0;
 }
 
@@ -29,9 +29,9 @@ my $extra_compiler_flags .=
   '-Iinc' . ( $have_pdl ? ' -DMATH_GSLX_ODEIV2_USE_PDL' : '' );
 
 my $build = Module::Build->new(
-    module_name       => 'Math::GSLx::ODEIV2',
-    dist_version_from => 'lib/Math/GSLx/ODEIV2.pm',
-    dist_abstract     => 'Solve ODEs using Perl and GSL v1.15+',
+    module_name       => 'PerlGSL::DiffEq',
+    dist_version_from => 'lib/PerlGSL/DiffEq.pm',
+    dist_abstract     => 'A Perlish Interface to Solving ODEs using GSL v1.15+',
     dist_author       => 'Joel Berger <joel.a.berger@gmail.com>',
     license           => 'perl',
     requires          => {
@@ -47,15 +47,15 @@ my $build = Module::Build->new(
     c_source => 'src',
     extra_compiler_flags => $extra_compiler_flags,
     extra_linker_flags => $gsl_libs,
-    #meta_merge        => {
-    #  resources => {
-    #    repository => {
-    #      type => "git",
-    #      url  => "git://github.com/jberger/Math-GSLx-ODEIV2.git",
-    #      web  => "http://github.com/jberger/Math-GSLx-ODEIV2",
-    #    },
-    #  },
-    #},
+  meta_merge => {
+    resources  => {
+      repository => "http://github.com/jberger/PerlGSL-DiffEq",
+      bugtracker => "http://github.com/jberger/PerlGSL-DiffEq/issues",
+    },
+    no_index => {
+      file => [ 'README.pod' ],
+    },
+  },
 );
 
 $build->config_data('have_pdl', $have_pdl);
