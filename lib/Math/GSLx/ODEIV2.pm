@@ -1,10 +1,10 @@
-package Math::GSLx::ODEIV2;
+package PerlGSL::DiffEq;
 
 use 5.008000;
 use strict;
 use warnings;
 
-use Math::GSLx::ODEIV2::ConfigData;
+use PerlGSL::DiffEq::ConfigData;
 
 use Carp;
 use Scalar::Util qw/looks_like_number/;
@@ -22,7 +22,7 @@ $VERSION = eval $VERSION;
 our $Verbose = 0;
 
 require XSLoader;
-XSLoader::load('Math::GSLx::ODEIV2', $VERSION);
+XSLoader::load('PerlGSL::DiffEq', $VERSION);
 
 my %step_types = (
   rk2   	=> 1,
@@ -61,7 +61,7 @@ sub ode_solver {
   } 
 
   # PDL
-  my $have_pdl = Math::GSLx::ODEIV2::ConfigData->config('have_pdl');
+  my $have_pdl = PerlGSL::DiffEq::ConfigData->config('have_pdl');
   my $want_pdl = $opts->{PDL};
   if ($have_pdl) {
     if ($want_pdl) {
@@ -71,7 +71,7 @@ sub ode_solver {
     }
   } else {
     if ($want_pdl) {
-      carp "Your installed version of Math::GSLx::ODEIV2 was compiled without PDL capability. To use the PDL backend please be sure that PDL is installed, then rebuild Math::GSLx::ODEIV2.";
+      carp "Your installed version of PerlGSL::DiffEq was compiled without PDL capability. To use the PDL backend please be sure that PDL is installed, then rebuild PerlGSL::DiffEq.";
     }
   }
 
@@ -149,11 +149,11 @@ __END__
 __POD__
 =head1 NAME
 
-Math::GSLx::ODEIV2 - Solve ODEs using Perl and GSL v1.15+
+PerlGSL::DiffEq - A Perlish Interface to Solving ODEs using GSL v1.15+
 
 =head1 SYNOPSIS
 
- use Math::GSLx::ODEIV2;
+ use PerlGSL::DiffEq;
  
  #Differential Equation(s)
  sub eqn {
@@ -181,11 +181,11 @@ This module provides a Perl-ish interface to the Gnu Scientific Library's (L<GSL
 
 =head2 NAMESPACE
 
-Why the C<Math::GSLx::> namespace? Well since Jonathan Leto has been kind enough to SWIG the entire GSL library into the C<Math::GSL::> namespace I didn't want to confuse things by impling that this module was a part of that effort. The C<x> namespaces have become popular so I ran with it.
+This module used to be named L<Math::GSLx::ODEIV2>, a name I never liked. After writing interfaces to GSL's integration libraries I decided to unite the modules under a common namespace L<PerlGSL>. This namespace/distribution contains modular interfaces to the GSL. Read more in the documentation for L<PerlGSL>.
 
 =head2 INTERFACE STABILITY
 
-This module is in an alpha state. It needs more tests and the ability to configure more of the options that the GSL library allows. Currently this module leans on the fact that GSL has an extensive test suite. While the author has put some thought into the interface it may change in the future as the above mentioned functionality is added or as bugs appear. Bug reports are encouraged!
+This module is in an beta state. It needs more tests and the ability to configure more of the options that the GSL library allows. Currently this module leans on the fact that GSL has an extensive test suite. While the author has put some thought into the interface it may change in the future as the above mentioned functionality is added or as bugs appear. Bug reports are encouraged!
 
 Also, as of version 0.06, support for including a Jacobian of the system has been added, including the step types that this allows, however this functionality is almost totally untested. Until some of the stiff/extreme test cases can be ported from GSL the author is not certain the the functionality has been properly implemented. Sadly C<t/sine.*> pass even when not properly implemented, which is unnerving. I<Caveat emptor>.
 
@@ -348,6 +348,8 @@ On systems with PDL installed, I would like to include some mechanism which will
 
 =over
 
+=item L<PerlGSL>
+
 =item L<Math::ODE>
 
 =item L<Math::GSL::ODEIV>
@@ -360,7 +362,7 @@ On systems with PDL installed, I would like to include some mechanism which will
 
 =head1 SOURCE REPOSITORY
 
-L<http://github.com/jberger/Math-GSLx-ODEIV2>
+L<http://github.com/jberger/PerlGSL-DiffEq>
 
 =head1 AUTHOR
 
