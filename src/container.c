@@ -8,7 +8,7 @@
 /* -------------------------------------------- */
 /* These functions when properly replaced could implement a PDL backend */
 
-#ifdef MATH_GSLX_ODEIV2_USE_PDL
+#ifdef PERLGSL_DIFFEQ_USE_PDL
 
 SV * make_container (int num, int steps) {
   return newRV_noinc((SV*)newAV());
@@ -28,7 +28,7 @@ int store_data (SV* holder, int num, const double t, const double y[]) {
   return 0;
 }
 
-#else /* MATH_GSLX_ODEIV2_USE_PDL */
+#else /* PERLGSL_DIFFEQ_USE_PDL */
 
 SV * make_container (int num, int steps) {
   return newRV_noinc((SV*)newAV());
@@ -48,6 +48,6 @@ int store_data (SV* holder, int num, const double t, const double y[]) {
   return 0;
 }
 
-#endif /* MATH_GSLX_ODEIV2_USE_PDL */
+#endif /* PERLGSL_DIFFEQ_USE_PDL */
 /* -------------------------------------------- */
 

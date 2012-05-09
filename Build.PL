@@ -26,7 +26,7 @@ my $gsl_libs = qx! gsl-config --libs !;
 
 my $have_pdl = Module::Build->check_installed_status('PDL')->{ok};
 my $extra_compiler_flags .=
-  '-Iinc' . ( $have_pdl ? ' -DMATH_GSLX_ODEIV2_USE_PDL' : '' );
+  '-Iinc' . ( $have_pdl ? ' -DPERLGSL_DIFFEQ_USE_PDL' : '' );
 
 my $build = Module::Build->new(
     module_name       => 'PerlGSL::DiffEq',
