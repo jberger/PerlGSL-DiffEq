@@ -24,10 +24,6 @@ if ($gsl_version < $min_gsl_version) {
 
 my $gsl_libs = qx! gsl-config --libs !;
 
-my $have_pdl = Module::Build->check_installed_status('PDL')->{ok};
-my $extra_compiler_flags .=
-  '-Iinc' . ( $have_pdl ? ' -DPERLGSL_DIFFEQ_USE_PDL' : '' );
-
 my $build = Module::Build->new(
     module_name       => 'PerlGSL::DiffEq',
     dist_version_from => 'lib/PerlGSL/DiffEq.pm',
@@ -45,7 +41,7 @@ my $build = Module::Build->new(
       'ExtUtils::CBuilder' => 0,
     },
     c_source => 'src',
-    extra_compiler_flags => $extra_compiler_flags,
+    extra_compiler_flags => '-Iinc',
     extra_linker_flags => $gsl_libs,
   meta_merge => {
     resources  => {
@@ -57,8 +53,6 @@ my $build = Module::Build->new(
     },
   },
 );
-
-$build->config_data('have_pdl', $have_pdl);
 
 $build->create_build_script;
 

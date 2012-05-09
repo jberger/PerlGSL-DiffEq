@@ -5,11 +5,8 @@
 #define NEED_newRV_noinc
 #include "ppport.h"
 
-/* -------------------------------------------- */
 /* These functions when properly replaced could implement a PDL backend */
 
-#ifdef PERLGSL_DIFFEQ_USE_PDL
-
 SV * make_container (int num, int steps) {
   return newRV_noinc((SV*)newAV());
 }
@@ -28,26 +25,4 @@ int store_data (SV* holder, int num, const double t, const double y[]) {
   return 0;
 }
 
-#else /* PERLGSL_DIFFEQ_USE_PDL */
-
-SV * make_container (int num, int steps) {
-  return newRV_noinc((SV*)newAV());
-}
-
-int store_data (SV* holder, int num, const double t, const double y[]) {
-  int i;
-  AV* data = newAV();
-
-  av_push(data, newSVnv(t));
-  for (i = 0; i < num; i++) {
-    av_push(data, newSVnv(y[i]));
-  }
-
-  av_push((AV *)SvRV(holder), newRV_noinc((SV *)data));
-
-  return 0;
-}
-
-#endif /* PERLGSL_DIFFEQ_USE_PDL */
-/* -------------------------------------------- */
 

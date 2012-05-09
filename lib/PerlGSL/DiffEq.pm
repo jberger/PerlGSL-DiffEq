@@ -60,21 +60,6 @@ sub ode_solver {
     }
   } 
 
-  # PDL
-  my $have_pdl = PerlGSL::DiffEq::ConfigData->config('have_pdl');
-  my $want_pdl = $opts->{PDL};
-  if ($have_pdl) {
-    if ($want_pdl) {
-      carp "PDL return is not yet implemented";
-    } else {
-      #carp "Perl AoA unroll from PDL backend is not yet implemented";
-    }
-  } else {
-    if ($want_pdl) {
-      carp "Your installed version of PerlGSL::DiffEq was compiled without PDL capability. To use the PDL backend please be sure that PDL is installed, then rebuild PerlGSL::DiffEq.";
-    }
-  }
-
   # Step type
   my $step_type = 0;
   if ( exists $opts->{type} and exists $step_types{ $opts->{type} } ) {
