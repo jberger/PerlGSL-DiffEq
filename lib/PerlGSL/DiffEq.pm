@@ -14,7 +14,7 @@ our @EXPORT_OK = ( qw/ get_gsl_version get_step_types / );
 our %EXPORT_TAGS;
 push @{$EXPORT_TAGS{all}}, @EXPORT, @EXPORT_OK;
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 $VERSION = eval $VERSION;
 
 our $Verbose = 0;
@@ -353,7 +353,7 @@ Joel Berger, E<lt>joel.a.berger@gmail.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2011 by Joel Berger
+Copyright (C) 2012 by Joel Berger
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
