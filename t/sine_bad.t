@@ -6,7 +6,7 @@ use Data::Dumper;
 local $Data::Dumper::Terse = 1;
 local $Data::Dumper::Indent = 0;
 
-BEGIN { use_ok('Math::GSLx::ODEIV2', ':all') };
+BEGIN { use_ok('PerlGSL::DiffEq', ':all') };
 
 sub eqn {
 

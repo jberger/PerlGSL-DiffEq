@@ -3,6 +3,6 @@ use warnings;
 
 use Test::More tests => 1;
 
-use_ok('Math::GSLx::ODEIV2');
+use_ok('PerlGSL::DiffEq');
 
 

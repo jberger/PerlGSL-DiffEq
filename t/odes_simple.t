@@ -3,7 +3,7 @@ use warnings;
 
 use Test::More;
 
-use Math::GSLx::ODEIV2;
+use PerlGSL::DiffEq;
 
 my $comp_level = "%0.4f";
 
