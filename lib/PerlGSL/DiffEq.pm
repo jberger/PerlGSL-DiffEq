@@ -4,8 +4,6 @@ use 5.008000;
 use strict;
 use warnings;
 
-use PerlGSL::DiffEq::ConfigData;
-
 use Carp;
 use Scalar::Util qw/looks_like_number/;
 
