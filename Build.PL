@@ -41,7 +41,7 @@ my $build = Module::Build->new(
       'ExtUtils::CBuilder' => 0,
     },
     c_source => 'src',
-    extra_compiler_flags => '-Iinc',
+    extra_compiler_flags => '-Isrc',
     extra_linker_flags => $gsl_libs,
   meta_merge => {
     resources  => {

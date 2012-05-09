@@ -1,13 +1,14 @@
 Build.PL
 Changes
-inc/common.h
-inc/container.h
-inc/ppport.h
 lib/PerlGSL/DiffEq.pm
 lib/PerlGSL/DiffEq.xs
 MANIFEST			This list of files
+README.pod
 src/common.c
+src/common.h
 src/container.c
+src/container.h
+src/ppport.h
 t/00-use.t
 t/ode_system.t
 t/odes_simple.t
