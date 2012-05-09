@@ -1,7 +1,7 @@
 char* get_gsl_version ();
 
-#ifndef MATH_GSLX_ODEIV2_PARAMS_STRUCT
-#define MATH_GSLX_ODEIV2_PARAMS_STRUCT
+#ifndef PERLGSL_DIFFEQ_PARAMS_STRUCT
+#define PERLGSL_DIFFEQ_PARAMS_STRUCT
 
 struct params {
   int num;
