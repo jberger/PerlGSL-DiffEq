@@ -98,7 +98,7 @@ sub ode_solver {
     if ($opts->{scaling} eq 'y') {
       # This is currently the default, do nothing
     } elsif ($opts->{scaling} eq 'yp') {
-      ($a_y, $a_dydt) = (1, 0);
+      ($a_y, $a_dydt) = (0, 1);
     } else {
       carp "Could not understand scaling specification. Using defaults.";
     }
