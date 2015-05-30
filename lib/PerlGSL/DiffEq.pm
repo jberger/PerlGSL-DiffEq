@@ -17,12 +17,12 @@ our %EXPORT_TAGS;
 push @{$EXPORT_TAGS{all}}, @EXPORT, @EXPORT_OK;
 
 our $VERSION = '0.080_001';
-$VERSION = eval $VERSION;
 
 our $Verbose = 0;
 
 require XSLoader;
 XSLoader::load('PerlGSL::DiffEq', $VERSION);
+$VERSION = eval $VERSION;
 
 my %step_types = (
   rk2   	=> 1,
