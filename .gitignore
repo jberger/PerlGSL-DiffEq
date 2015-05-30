@@ -1,0 +1,6 @@
+MANIFEST
+*\.bak
+META\.*
+MYMETA\.*
+Build
+_build/
