@@ -7,6 +7,8 @@ use warnings;
 use Carp;
 use Scalar::Util qw/looks_like_number/;
 
+use Alien::GSL 1.00;
+
 use parent 'Exporter';
 our @EXPORT = ( qw/ ode_solver / );
 our @EXPORT_OK = ( qw/ get_gsl_version get_step_types / );
@@ -14,7 +16,7 @@ our @EXPORT_OK = ( qw/ get_gsl_version get_step_types / );
 our %EXPORT_TAGS;
 push @{$EXPORT_TAGS{all}}, @EXPORT, @EXPORT_OK;
 
-our $VERSION = '0.08';
+our $VERSION = '0.080_001';
 $VERSION = eval $VERSION;
 
 our $Verbose = 0;
